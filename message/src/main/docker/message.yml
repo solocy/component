@@ -1,0 +1,29 @@
+version: '2'
+services:
+  message-app:
+    #文件下载不下来时
+    #docker login --username=100006379862 ccr.ccs.tencentyun.com
+    #password : videon123
+    image: ccr.ccs.tencentyun.com/liujc/message:1.0.0
+    volumes:
+    - ~/res:/home/work/res
+    environment:
+      # - _JAVA_OPTIONS=-Xmx512m -Xms256m
+      - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
+      - SPRING_REDIS_HOST=127.17.0.1
+      - SPRING_KAFKA_BOOTSTRAPSERVERS=127.17.0.1:9092
+      - APPLICATION_GROUPID=192.168.1.106
+      - APPLICATION_TOPICNAME=192.168.1.106,192.168.1.108
+      - APPLICATION_CHANNEL=person_rec
+    ports:
+    - 8081:8081
+  message-kafka:
+    extends:
+      service: message-kafka
+      file: kafka.yml
+  message-zookeeper:
+    extends:
+      service: message-zookeeper
+      file: zookeeper.yml
+
+

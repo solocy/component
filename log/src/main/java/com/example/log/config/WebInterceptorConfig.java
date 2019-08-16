@@ -1,0 +1,23 @@
+package com.example.log.config;
+
+import com.example.log.common.interceptor.InterceptorConfig;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+/**
+ * 添加自定义拦截器
+ *
+ */
+@Configuration
+public class WebInterceptorConfig implements WebMvcConfigurer {
+
+    @Autowired
+    private InterceptorConfig interceptorConfig;
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(interceptorConfig);
+    }
+}

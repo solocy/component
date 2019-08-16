@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:mysql://localhost:3306/quartz?useUnicode=true&characterEncoding=utf8&useSSL=false
+    username: root
+    password:
+  quartz:
+    auto-startup: true
+    overwrite-existing-jobs: true
+    jdbc:
+      schema: classpath:tables_mysql_innodb.sql
+      initialize-schema: always
+    job-store-type: jdbc
+logging:
+  level:
+    ROOT: INFO
+    com.example.quartz: DEBUG
