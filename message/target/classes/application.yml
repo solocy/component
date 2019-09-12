@@ -1,0 +1,33 @@
+server:
+  port: 8081
+spring:
+  kafka:
+    bootstrap-servers: 192.168.1.106:9092
+
+    producer:
+      retries: 0
+      batch-size: 16384
+      buffer-memory: 33554432
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      properties:
+        linger.ms: 1
+    consumer:
+      enable-auto-commit: false
+      auto-commit-interval: 100ms
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      properties:
+        session.timeout.ms: 15000
+
+  redis:
+    host: 192.168.1.111
+    port: 6379
+application:
+  groupId: 192.168.1.106
+  topicName: 192.168.1.106,192.168.1.108
+  channel: person_rec
+logging:
+  level:
+    ROOT: info
+    cn.videon.message: debug

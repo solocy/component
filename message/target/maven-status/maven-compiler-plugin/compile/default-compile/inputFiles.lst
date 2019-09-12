@@ -1,0 +1,6 @@
+/Users/liujc/github/component/message/src/main/java/cn/videon/message/config/ApplicationProperties.java
+/Users/liujc/github/component/message/src/main/java/cn/videon/message/config/MessagingConfiguration.java
+/Users/liujc/github/component/message/src/main/java/cn/videon/message/MessageApplication.java
+/Users/liujc/github/component/message/src/main/java/cn/videon/message/config/KafkaTopicConfiguration.java
+/Users/liujc/github/component/message/src/main/java/cn/videon/message/service/KafkaService.java
+/Users/liujc/github/component/message/src/main/java/cn/videon/message/service/RedisMessageSubscriber.java

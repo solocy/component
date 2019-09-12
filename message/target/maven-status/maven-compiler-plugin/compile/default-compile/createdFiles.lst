@@ -1,0 +1,8 @@
+cn/videon/message/config/KafkaTopicConfiguration.class
+cn/videon/message/MessageApplication.class
+META-INF/spring-configuration-metadata.json
+cn/videon/message/service/KafkaService.class
+cn/videon/message/config/ApplicationProperties.class
+cn/videon/message/service/KafkaService$1.class
+cn/videon/message/config/MessagingConfiguration.class
+cn/videon/message/service/RedisMessageSubscriber.class

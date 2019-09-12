@@ -3,6 +3,7 @@ package com.example.log.service.impl;
 import com.example.log.common.annotation.LogInfo;
 import com.example.log.common.utils.UserAgentUtils;
 import com.example.log.domain.Log;
+import com.example.log.domain.enumeration.LogType;
 import com.example.log.repository.LogRepository;
 import com.example.log.service.LogService;
 import com.example.log.utils.RequestHolder;
@@ -12,6 +13,8 @@ import org.aspectj.lang.reflect.MethodSignature;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.HttpRequestHandler;
 
@@ -19,6 +22,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.Method;
 import java.time.Instant;
 import java.util.Arrays;
+import java.util.List;
 
 @Service
 public class LogServiceImpl implements LogService {
@@ -97,5 +101,16 @@ public class LogServiceImpl implements LogService {
         log.setCreateTime(Instant.now());
         logger.debug("save log {}",log);
         return logRepository.save(log);
+    }
+
+    @Override
+    public Page<Log> getInfoLog(Pageable pageable) {
+
+        return logRepository.findAllByType(LogType.INFO,pageable);
+    }
+
+    @Override
+    public Page<Log> getErrorLog(Pageable pageable) {
+        return logRepository.findAllByType(LogType.ERROR,pageable);
     }
 }
