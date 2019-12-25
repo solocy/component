@@ -21,6 +21,9 @@ public class ScheduleJob extends QuartzJobBean {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
     private ExecutorService service = Executors.newSingleThreadExecutor();
 
+    public ScheduleJob() {
+    }
+
     @Override
     protected void executeInternal(JobExecutionContext context) {
         Job scheduleJob = (Job) context.getMergedJobDataMap().get(Job.JOB_PARAM_KEY);

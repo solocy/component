@@ -1,7 +1,6 @@
 package com.example.quartz.web.rest;
 
 
-import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.example.quartz.domain.Job;
 import com.example.quartz.service.JobService;
 import org.slf4j.Logger;
@@ -30,7 +29,6 @@ public class JobResource {
     }
 
     @GetMapping("/jobs/{jobId}")
-    @SentinelResource("resource")
     public Optional<Job> findJob(@PathVariable Long jobId) {
         log.debug("REST request to get job by id {}",jobId);
         return jobService.findJob(jobId);

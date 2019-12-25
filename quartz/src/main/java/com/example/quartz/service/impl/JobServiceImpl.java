@@ -12,13 +12,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
 import java.lang.reflect.Method;
 import java.util.*;
 
 @Service
-@Transactional
+
+@Transactional(readOnly = false, rollbackFor = Throwable.class)
 public class JobServiceImpl implements JobService {
 
     private Logger log = LoggerFactory.getLogger(this.getClass());
@@ -52,7 +54,8 @@ public class JobServiceImpl implements JobService {
         job.setCreateTime(new Date());
         job.setStatus(ScheduleStatus.PAUSE);
         job = jobRepostitory.save(job);
-        ScheduleUtils.createScheduleJob(scheduler,job);
+        job.getBeanName().toString();
+//        ScheduleUtils.createScheduleJob(scheduler,job);
         return job;
     }
 
