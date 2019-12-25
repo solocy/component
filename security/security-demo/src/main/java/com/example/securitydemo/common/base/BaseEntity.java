@@ -1,15 +1,16 @@
-package com.example.securitydemo.common;
+package com.example.securitydemo.common.base;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 import java.time.Instant;
 
-@Data
+@Getter
+@Setter
 @MappedSuperclass
 public class BaseEntity {
 

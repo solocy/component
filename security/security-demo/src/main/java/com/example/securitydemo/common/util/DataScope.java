@@ -1,4 +1,4 @@
-package com.example.securitydemo.common;
+package com.example.securitydemo.common.util;
 
 import com.example.securitydemo.domain.Dept;
 import com.example.securitydemo.service.DeptService;
@@ -16,13 +16,14 @@ public class DataScope {
     private DeptService deptService;
 
 
-    public List<Long> getDeptAndChildrenId(List<Dept> depts) {
+    public List<Long> getDeptAndChildrenId(List<Long> deptIds) {
         List<Long> longs = new ArrayList<>();
-        depts.forEach(dept -> {
-                    List<Long> ids = deptService.getDeptChildren(dept.getId()).stream().map(Dept::getId).collect(Collectors.toList());
-                    ids.add(dept.getId());
+        deptIds.forEach(id -> {
+                    List<Long> ids = deptService.getDeptChildren(id).stream().map(Dept::getId).collect(Collectors.toList());
                     longs.addAll(ids);
+                    longs.addAll( getDeptAndChildrenId(ids));
                 });
+        longs.addAll(deptIds);
         return longs;
     }
 }

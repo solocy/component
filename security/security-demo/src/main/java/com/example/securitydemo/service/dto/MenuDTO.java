@@ -19,9 +19,15 @@ public class MenuDTO {
 
     private String component;
 
+    private String type;
+
+    private Boolean iFrame;
+
+    private Boolean hidden;
+
     private String permission;
 
     private Long pid;
 
-    private List<MenuDTO> menuDTOS;
+    private List<MenuDTO> children;
 }

@@ -1,6 +1,6 @@
 package com.example.securitydemo.service.mapper;
 
-import com.example.securitydemo.common.BaseMapper;
+import com.example.securitydemo.common.base.BaseMapper;
 import com.example.securitydemo.domain.Role;
 import com.example.securitydemo.service.dto.RoleDTO;
 import org.mapstruct.Mapper;

@@ -1,9 +1,12 @@
 package com.example.securitydemo.service;
 
+import com.example.securitydemo.common.util.PageInfo;
 import com.example.securitydemo.domain.User;
 import com.example.securitydemo.service.dto.UserDTO;
+import com.example.securitydemo.service.dto.UserQueryDTO;
 
 import java.util.List;
+import java.util.Map;
 
 public interface UserService {
 
@@ -12,7 +15,9 @@ public interface UserService {
 
     UserDTO get(Long id);
 
-    List<UserDTO> findQuery(User user);
+    List<UserDTO> findQuery(UserQueryDTO user);
+
+    Map<String,Object> findQuery(UserQueryDTO user, PageInfo pageable);
 
     void delete(Long id);
 }

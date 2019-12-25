@@ -21,4 +21,6 @@ public class UserDTO {
     private String email;
 
     private Set<RoleSmallDTO> roles = new HashSet<>();
+
+    private DeptDTO dept;
 }
